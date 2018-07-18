@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_165337) do
+ActiveRecord::Schema.define(version: 2018_07_18_202003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 2018_07_18_165337) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
+    t.bigint "customer_id"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price"
+    t.index ["customer_id"], name: "index_books_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -51,42 +53,28 @@ ActiveRecord::Schema.define(version: 2018_07_18_165337) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "deliveries", force: :cascade do |t|
-    t.datetime "delivery_date"
-    t.string "delivery_confirmation"
-    t.string "special_instructions"
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "order_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
-    t.string "street"
-    t.integer "zip_code"
-    t.string "name"
+    t.index ["book_id"], name: "index_line_items_on_book_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "order_date"
-    t.string "order_detail"
-    t.string "order_confirmation"
+    t.datetime "delivery_date"
+    t.boolean "paid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "city"
-    t.string "street"
-    t.integer "zip_code"
-    t.integer "book_id"
-    t.integer "delivery_id"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "books", "customers"
+  add_foreign_key "line_items", "books"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "orders", "customers"
 end

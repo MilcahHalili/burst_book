@@ -4,16 +4,13 @@ Rails.application.routes.draw do
   resources :customers, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders do 
-    get 'confirmation', on: :member
+    resources :line_items, shallow: true
   end
-  resources :books, only: [:new, :create, :show]
-  resources :deliveries
+  resources :books, only: [:new, :create, :show, :destroy]
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
   get '/faq', to: 'layouts#faq'
-  get '/mydashboard', to: 'customers#dashboard'
-  get '/cart', to: 'books#index'
-  get '/checkout', to: 'deliveries#new'
+get '/dashboard', to: 'customers#dashboard'
   get '/payment', to: 'orders#payment'
   get '/confirmation', to: 'orders#confirmation'
 end

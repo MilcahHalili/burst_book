@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		customer = Customer.find_by(email: params[:email])
 		if customer && customer.authenticate(params[:password])
 			session[:customer_id] = customer.id
-			redirect_to '/mydashboard'
+			redirect_to '/dashboard'
 		else
 			flash.now.alert = 'Invalid login credentials. Please try again!'
 			render :new

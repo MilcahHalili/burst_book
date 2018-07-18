@@ -29,6 +29,11 @@ class OrdersController < ApplicationController
 	end
 
 	def show
+		if params[:id] == 'cart'
+			@order = current_customer.cart
+		else
+			@order = Order.find(params[:id])
+		end
 	end
 
 	def confirmation

@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 	end
 
 	def create
-		book = Book.create! params.require(:book).permit(:name)
+		book = Book.create! params.require(:book).permit(:title)
 		book.images.attach(params[:book][:image])
 		redirect_to book
 	end
@@ -19,6 +19,10 @@ class BooksController < ApplicationController
 	end
 
 	def destroy
+		@book = Book.find(params[:id])
+		@book.destroy
+
+		redirect_to request.env["HTTP_REFERER"]
   	end
 
 	private

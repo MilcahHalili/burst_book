@@ -7,9 +7,9 @@
 			<% @books.each do |book| %>
 				<div class="tr">
 				<tr>
-					<td><%= link_to 'Remove', '#' %></td>
+					<td><%= link_to 'Remove', book_path(book), method: :delete %></td>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<td>Price</td>
+					<td>book.price</td>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<td><%= link_to book.name, "/books/#{book.id}" %></td>
 					<br>

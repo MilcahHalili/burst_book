@@ -17,9 +17,9 @@
     <% if current_customer %>
       <%= current_customer.name %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'DASHBOARD', '/mydashboard' %>
+      <%= link_to 'DASHBOARD', '/dashboard' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'CART', '/cart' %>
+      <%= link_to 'CART', '/orders/cart' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'LOG OUT', session_path('dummy'), method: :delete %>
     <% else %>
@@ -35,7 +35,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'HOME', root_path %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'FAQ', '/howto' %>
+      <%= link_to 'FAQ', '/faq' %>
     &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'CONTACT', "#" %>
     </div>

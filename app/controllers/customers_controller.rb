@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
 		if @customer.save
 			session[:customer_id] = @customer.id
 			flash[:notice] = 'Success! You created an account.'
-			redirect_to '/mydashboard'
+			redirect_to '/dashboard'
 		else
 			render :new
 		end
