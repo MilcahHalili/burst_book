@@ -47,8 +47,12 @@ h1, h2, h3, div, p, .newsession, .field {
     justify-content: center;
 }
 
+h1 {
+    margin-top: 5%;
+}
+
 div {
-    margin-bottom: 1%
+    margin-bottom: 1%;
 }
 
 nav {
@@ -56,12 +60,12 @@ nav {
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 3%;
-    margin-right: 10%;
+    margin-right: 15%;
 }
 
-.how {
+.leftnav {
     margin-right: auto;
-    margin-left: 10%;
+    margin-left: 16%;
 }
 
 footer {
@@ -98,4 +102,15 @@ ul {
 
 li {
     margin: 0 0 4.5% 0;
+}
+
+.totalcost {
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.tr {
+    margin-left: 40%;
+    display: flex;
+    justify-content: left;
 }

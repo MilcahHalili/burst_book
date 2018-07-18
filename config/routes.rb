@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   resources :deliveries
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
-  get '/howto', to: 'layouts#howto'
+  get '/faq', to: 'layouts#faq'
   get '/mydashboard', to: 'customers#dashboard'
-  get '/mycart', to: 'customers#index'
-  get '/checkout', to: 'orders#index'
-  get '/delivery', to: 'orders#new'
-  get 'confirmation', to: 'orders#confirmation'
+  get '/cart', to: 'books#index'
+  get '/checkout', to: 'deliveries#new'
+  get '/payment', to: 'orders#payment'
+  get '/confirmation', to: 'orders#confirmation'
 end

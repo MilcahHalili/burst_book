@@ -1,0 +1,33 @@
+<h1>Cart</h1>
+<div>
+	<%= link_to "ADD A BOOK", "/books/new" %></li>
+	</div>
+		<br>
+		<br>
+			<% @books.each do |book| %>
+				<div class="tr">
+				<tr>
+					<td><%= link_to 'Remove', '#' %></td>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<td>Price</td>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<td><%= link_to book.name, "/books/#{book.id}" %></td>
+					<br>
+				</tr>
+				</div>
+			<% end %>
+			<div class="totalcost">
+				<ul>
+					<li>Subtotal: </li>
+					<li>Tax: </li>
+					<li>Shipping: </li>
+					<li>Total: </li>
+				</ul>
+			</div>
+			<br>
+			<br>
+			<br>
+		<div>
+			<%= link_to "CHECKOUT", "/checkout" %>
+		</div>
+</div>

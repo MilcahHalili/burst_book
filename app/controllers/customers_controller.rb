@@ -1,10 +1,6 @@
 class CustomersController < ApplicationController
 	before_action :logged_in_customer, only: [:destroy]
 
-	def index
-		@books = Book.all
-	end
-
 	def new
 		@customer = Customer.new
 	end

@@ -11,15 +11,15 @@
 
   <body>
   <nav>
-  <span class="how">
-    <%= link_to 'HOW TO', '/howto' %>
+  <span class="leftnav">
+    <%= link_to 'CREATE A BOOK', '/books/new' %>
   </span>
     <% if current_customer %>
       <%= current_customer.name %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'MY DASHBOARD', '/mydashboard' %>
+      <%= link_to 'DASHBOARD', '/mydashboard' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'VIEW CART', '/mycart' %>
+      <%= link_to 'CART', '/cart' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'LOG OUT', session_path('dummy'), method: :delete %>
     <% else %>
@@ -35,6 +35,8 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'HOME', root_path %>
       &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'FAQ', '/howto' %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'CONTACT', "#" %>
     </div>
   </footer>
