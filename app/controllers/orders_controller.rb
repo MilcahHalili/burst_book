@@ -14,18 +14,6 @@ class OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(order_params)
-		# redirect_to '/confirmation'
-		p '$' * 100
-		p params 
-		p '$' * 100
-		if @order.save 
-			redirect_to confirmation_order_path(@order)
-		else
-			p '*' * 100
-			p @order.errors
-			p '*' * 100
-			redirect_back
-		end
 	end
 
 	def show
@@ -34,12 +22,6 @@ class OrdersController < ApplicationController
 		else
 			@order = Order.find(params[:id])
 		end
-	end
-
-	def confirmation
-		p '*' * 100
-		p params 
-		p '*' * 100
 	end
 
 	private

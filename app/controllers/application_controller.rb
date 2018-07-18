@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-		redirect_to login_path, alert: 'Please sign in.' if current_customer.nil?
+		redirect_to login_path, alert: 'Please sign in!' if current_customer.nil?
   end
 
 end

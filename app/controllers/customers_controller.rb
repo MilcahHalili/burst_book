@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
 		@customer = Customer.new(customer_params)
 		if @customer.save
 			session[:customer_id] = @customer.id
-			flash[:notice] = 'Success! You created an account.'
+			flash.now.alert = 'Success! You created an account.'
 			redirect_to '/dashboard'
 		else
 			render :new
@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
 	end
 
 	def show
-		
+		@current_customer = Customer.first
 	end
 
 	def destroy

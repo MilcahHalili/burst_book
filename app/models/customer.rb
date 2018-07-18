@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
     has_many :orders, dependent: :destroy
 
     def cart
-        cart = Order.find_by(customer: current_customer, paid: false)
-        cart || Order.create(customer: current_customer)
+        cart = Order.find_by(customer: @current_customer, paid: false)
+        cart || Order.create(customer: @current_customer)
     end
 end

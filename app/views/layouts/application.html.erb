@@ -12,7 +12,7 @@
   <body>
   <nav>
   <span class="leftnav">
-    <%= link_to 'CREATE A BOOK', '/books/new' %>
+    <%= link_to 'CREATE A BOOK', new_book_path %>
   </span>
     <% if current_customer %>
       <%= current_customer.name %>
