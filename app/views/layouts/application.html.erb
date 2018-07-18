@@ -10,6 +10,33 @@
   </head>
 
   <body>
+  <nav>
+  <span class="how">
+    <%= link_to 'HOW TO', '/howto' %>
+  </span>
+    <% if current_customer %>
+      <%= current_customer.name %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'MY DASHBOARD', '/mydashboard' %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'VIEW CART', '/mycart' %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'LOG OUT', session_path('dummy'), method: :delete %>
+    <% else %>
+      <span class="newsession"><%= link_to 'LOG IN', login_path %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'SIGN UP', new_customer_path %></span>
+    <% end %>
+  </nav>
     <%= yield %>
+  <footer>
+    <div>
+      <%= link_to 'ABOUT', "#" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'HOME', root_path %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'CONTACT', "#" %>
+    </div>
+  </footer>
   </body>
 </html>

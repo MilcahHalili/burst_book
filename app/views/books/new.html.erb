@@ -1,0 +1,10 @@
+<h1>UPLOAD YOUR PHOTOS</h1>
+<div class="field">
+<%= form_with model: @book, local: true  do |f| %>
+  <%= f.label :name%><br>
+  <%= f.text_field :name %><br><br>
+  <%= f.file_field :image, multiple: true %><br>
+  <br><br>
+  <%= f.submit %>
+<% end %>
+</div>

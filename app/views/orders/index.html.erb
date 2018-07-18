@@ -1,0 +1,20 @@
+<h1>Checkout</h1>
+<div>
+	<ul>
+		<% @books.each do |book| %>
+			<li><%= link_to book.name, "/books/#{book.id}" %></li>
+		<% end %>
+	</ul>
+</div>
+<br>
+<div>
+	<ul>
+		<li>Subtotal: </li>
+		<li>Tax: </li>
+		<li>Shipping: </li>
+		<li>Total: </li>
+	</ul>
+</div>
+<div>
+<%= link_to "NEXT", "/delivery" %>
+</div>

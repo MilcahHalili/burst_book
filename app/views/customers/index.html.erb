@@ -1,0 +1,15 @@
+<h1>My Cart</h1>
+<div>
+	<ul>
+		<li><%= link_to "ADD A BOOK", "/books/new" %></li>
+			<br>
+			<br>
+				<% @books.each do |book| %>
+					<li><%= link_to book.name, "/books/#{book.id}" %></li>
+				<% end %>
+			<br>
+			<br>
+			<br>
+		<li><%= link_to "CHECKOUT", "/checkout" %></li>
+	</ul>
+</div>
