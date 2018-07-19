@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/faq', to: 'layouts#faq'
   get '/dashboard', to: 'customers#dashboard'
-  get '/payment', to: 'orders#payment'
   get '/confirmation', to: 'orders#confirmation'
 end

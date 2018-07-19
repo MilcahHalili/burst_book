@@ -10,10 +10,18 @@ class BooksController < ApplicationController
 	end
 
 	def create
-		book = Book.create! params.require(:book).permit(:title)
+		book = Book.new(params.require(:book).permit(:title))
+		book.customer_id = current_customer.id 
 		book.image.attach(params[:book][:image])
-		order = Order.create!(customer_id: current_customer.id)
-		line_item = LineItem.create!(book_id: book.id, order_id: order.id, quantity: 1)
+
+		if book.save 
+			order = Order.create!(customer_id: current_customer.id)
+			line_item = LineItem.create!(book_id: book.id, order_id: order.id, quantity: 1)
+		else
+			# should add errors
+			render :new 
+		end
+
 		redirect_to book
 	end
 

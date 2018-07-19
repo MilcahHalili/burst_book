@@ -14,12 +14,14 @@ class OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(order_params)
+		@order.paid = true
+		redirect_to '/confirmation'
 	end
 
 	def show
 		if params[:id] == 'cart'
-			@order = current_customer.cart(current_customer)
-			@line_items = @order.line_items
+			order = current_customer.cart(current_customer)
+			@line_items = order.map { |order| order.line_items }
 		else
 			@order = Order.find(params[:id])
 		end
@@ -28,7 +30,7 @@ class OrdersController < ApplicationController
 	private
 
 	def order_params
-		params.require(:order).permit(:name, :street, :city, :zip_code)
+		params.require(:order).permit(:name, :street, :city, :state, :zip_code, :special_instructions)
 	end
 	
 end
