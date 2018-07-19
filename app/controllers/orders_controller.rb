@@ -18,7 +18,8 @@ class OrdersController < ApplicationController
 
 	def show
 		if params[:id] == 'cart'
-			@order = current_customer.cart
+			@order = current_customer.cart(current_customer)
+			@line_items = @order.line_items
 		else
 			@order = Order.find(params[:id])
 		end

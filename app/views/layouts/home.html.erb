@@ -7,7 +7,9 @@
 <p><%= image_tag("flip_book_in_use", :alt => "flip book in use") %></p>
 
 <% if current_customer %>
+      <div>
       <%= link_to 'CREATE A BOOK', '/books/new' %>
+      </div>
     <% else %>
       <div>
         <%= link_to 'SIGN UP NOW', new_customer_path %>

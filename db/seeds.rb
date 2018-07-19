@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 customer = Customer.create(name: 'Milcah', email: 'halilicenteno@gmail.com', password: '123tree')
+book = Book.create(price: 10)

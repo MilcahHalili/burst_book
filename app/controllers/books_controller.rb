@@ -11,7 +11,9 @@ class BooksController < ApplicationController
 
 	def create
 		book = Book.create! params.require(:book).permit(:title)
-		book.images.attach(params[:book][:image])
+		book.image.attach(params[:book][:image])
+		order = Order.create!(customer_id: current_customer.id)
+		line_item = LineItem.create!(book_id: book.id, order_id: order.id, quantity: 1)
 		redirect_to book
 	end
 
