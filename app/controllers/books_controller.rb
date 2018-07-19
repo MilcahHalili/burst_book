@@ -12,6 +12,7 @@ class BooksController < ApplicationController
 	def create
 		book = Book.new(params.require(:book).permit(:title))
 		book.customer_id = current_customer.id 
+		book.price = $10
 		book.image.attach(params[:book][:image])
 
 		if book.save 

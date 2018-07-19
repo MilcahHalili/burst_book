@@ -7,9 +7,9 @@
                 <td class="img"><%= image_tag it.book.image.first %></td>
                 <td class="td"><%= it.quantity %></td>
                 <td class="td"><%= it.book.title %></td>
-                <td class="td">$10</td>
+                <td class="td"><%= it.book.price %></td>
                 <td class="td"><%= link_to 'REMOVE', it, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            <% end %>
+            <% end %>    
         <% end %>    
     </tr>
 </table>

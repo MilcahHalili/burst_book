@@ -27,6 +27,12 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def destroy
+		if @order.paid == true
+			@line_items.destroy
+		end
+	end
+
 	private
 
 	def order_params
