@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 			line_item.quantity += 1
 			line_item.save
 		else
-			LineItem.create(order: self, book_id: book_id)
+			LineItem.create(order: self, book_id: book_id, quantity: 1)
 		end
 	end
 end

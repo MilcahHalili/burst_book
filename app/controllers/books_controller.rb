@@ -11,13 +11,12 @@ class BooksController < ApplicationController
 
 	def create
 		book = Book.new(params.require(:book).permit(:title))
-		book.customer_id = current_customer.id 
-		book.price = $10
+		book.customer = current_customer
+		book.price = 10
 		book.image.attach(params[:book][:image])
 
 		if book.save 
-			order = Order.create!(customer_id: current_customer.id)
-			line_item = LineItem.create!(book_id: book.id, order_id: order.id, quantity: 1)
+			current_customer.cart.add_book(book.id)
 		else
 			# should add errors
 			render :new 

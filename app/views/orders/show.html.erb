@@ -1,19 +1,23 @@
 <h1>CART</h1>
-<% if @line_items %>
 <table>
+    <thead>
+        <tr><th></th><th>Title</th><th>Quantity</th><th>Price</th><th>Total</th><th></th></tr>
+    </thead>
+<% @order.line_items.each do |item| %>
     <tr>
-        <% @line_items.each do |item| %>
-            <% item.each do |it| %>
-                <td class="img"><%= image_tag it.book.image.first %></td>
-                <td class="td"><%= it.quantity %></td>
-                <td class="td"><%= it.book.title %></td>
-                <td class="td"><%= it.book.price %></td>
-                <td class="td"><%= link_to 'REMOVE', it, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            <% end %>    
-        <% end %>    
+        <td class="img"><%= image_tag item.book.image.first %></td>
+        <td class="td"><%= link_to item.book.title, "/books/#{item.book.id}" %></td>
+        <td class="td">
+            <%= link_to '-', dec_path(item), class: 'qty-change' %>
+            <%= item.quantity %>
+            <%= link_to '+', inc_path(item), class: 'qty-change' %>
+        </td>
+        <td class="td">$<%= item.book.price %></td>
+        <td class="td">$<%= item.book.price * item.quantity %></td>
+        <td class="td"><%= link_to 'REMOVE', item, method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
+<% end %>    
 </table>
-<% end %>
-<div>
-<%= link_to 'CHECKOUT', '/orders/new' %>
+<div id="checkout">
+<%= link_to 'CHECKOUT', new_order_path %>
 </div>

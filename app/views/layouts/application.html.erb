@@ -14,8 +14,10 @@
   <span class="leftnav">
     <%= link_to 'CREATE A BOOK', new_book_path %>
   </span>
+  <span class="customername">
     <% if current_customer %>
       <%= current_customer.name %>
+  </span>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'DASHBOARD', '/dashboard' %>
       &nbsp;&nbsp;&nbsp;&nbsp;

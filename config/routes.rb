@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
+  post '/checkout', to: 'orders#checkout', as: 'checkout'
   resources :orders do 
     resources :line_items, shallow: true
   end
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
   get '/faq', to: 'layouts#faq'
   get '/dashboard', to: 'customers#dashboard'
   get '/confirmation', to: 'orders#confirmation'
+  get '/line_items/:id/inc', to: 'line_items#inc', as: 'inc'
+  get '/line_items/:id/dec', to: 'line_items#dec', as: 'dec'
 end

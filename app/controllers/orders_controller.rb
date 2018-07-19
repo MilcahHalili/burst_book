@@ -1,35 +1,34 @@
 class OrdersController < ApplicationController
 
 	def index
-		@orders = Order.all
-	end
-
-	def index
-		@books = Book.all
+		@orders = current_customer.orders.order(updated_at: :desc)
 	end
 
 	def new
 		@order = Order.new
 	end
-
-	def create
-		@order = Order.new(order_params)
-		@order.paid = true
-		redirect_to '/confirmation'
-	end
-
+	
 	def show
 		if params[:id] == 'cart'
-			order = current_customer.cart(current_customer)
-			@line_items = order.map { |order| order.line_items }
+			@order = current_customer.cart
 		else
 			@order = Order.find(params[:id])
 		end
 	end
+	
+	def checkout
+		current_customer.cart.update_attributes(order_params)
+		current_customer.cart.paid = true
+		current_customer.cart.save
+		redirect_to '/confirmation'
+	end
 
 	def destroy
-		if @order.paid == true
-			@line_items.destroy
+		@orderid = Order.find(params[:id])
+		if @orderid.paid?
+			redirect_to '/confirmation'
+		else
+			redirect_to request.env["HTTP_REFERER"]
 		end
 	end
 
@@ -40,3 +39,4 @@ class OrdersController < ApplicationController
 	end
 	
 end
+
