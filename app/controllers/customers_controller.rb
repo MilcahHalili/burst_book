@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
 		if @customer.save
 			session[:customer_id] = @customer.id
 			flash.now.alert = 'Success! You created an account.'
-			redirect_to '/dashboard'
+			redirect_to new_book_path
 		else
 			render :new
 		end

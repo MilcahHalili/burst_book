@@ -14,15 +14,14 @@ class BooksController < ApplicationController
 		book.customer = current_customer
 		book.price = 10
 		book.image.attach(params[:book][:image])
-
+		
 		if book.save 
 			current_customer.cart.add_book(book.id)
+			redirect_to book
 		else
-			# should add errors
-			render :new 
+			redirect_to new_book_path
 		end
 
-		redirect_to book
 	end
 
 	def show
@@ -33,7 +32,7 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@book.destroy
 
-		redirect_to request.env["HTTP_REFERER"]
+		redirect_to order_path('cart')
   	end
 
 	private

@@ -1,21 +1,31 @@
 <h1 id="burst">BURST BOOK</h1>
 <h3>BUILD YOUR OWN</h3>
 <h1 id="secondh1">FLIP BOOK</h1>
-<p class="marker">Upload your photos</p>
-<p><%= image_tag("flip_book_in_action.jpg", :alt => "flip book in action") %></p>
-<p class="marker">We'll print them out for you</p>
-<p><%= image_tag("flip_book_in_use.jpg", :alt => "flip book in use") %></p>
+<div>
+  <p class="marker">Upload your photos</p>
+</div>
+<div>
+  <p><%= image_tag("flip_book_in_action.jpg", :alt => "flip book in action") %></p>
+</div>
+<div>
+  <p class="marker">We'll print them out for you</p>
+</div>
+<div class="last-photo">
+  <%= image_tag("flip_book_in_use.jpg", :alt => "flip book in use") %>
+</div>
 
 <% if current_customer %>
   <div>
-    <%= link_to 'CREATE A BOOK', '/books/new' %>
+    <%= link_to 'CREATE A BOOK', new_book_path, class: 'btn-xl-sbmt' %>
   </div>
   <% else %>
   <div>
     <%= link_to 'SIGN UP NOW', new_customer_path %>
   </div>
-  <p>OR</p>
   <div>
-    <%= link_to 'LOG IN', login_path %>
+  <p>OR</p>
+  </div>
+  <div>
+    <%= link_to 'LOG IN', login_path, class: 'btn-bg-sbmt' %>
   </div>
 <% end %>

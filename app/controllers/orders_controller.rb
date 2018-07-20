@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
 	def index
 		@orders = current_customer.orders.order(updated_at: :desc)
+		@orders.line_items
 	end
 
 	def new
@@ -17,19 +18,15 @@ class OrdersController < ApplicationController
 	end
 	
 	def checkout
-		current_customer.cart.update_attributes(order_params)
-		current_customer.cart.paid = true
-		current_customer.cart.save
-		redirect_to '/confirmation'
+		cart = current_customer.cart
+		cart.update_attributes(order_params)
+		cart.paid = true
+		cart.save
+		redirect_to confirmation_path
 	end
 
-	def destroy
-		@orderid = Order.find(params[:id])
-		if @orderid.paid?
-			redirect_to '/confirmation'
-		else
-			redirect_to request.env["HTTP_REFERER"]
-		end
+	def confirmation
+		@order = Order.first
 	end
 
 	private

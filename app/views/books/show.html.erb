@@ -2,8 +2,11 @@
 <br>
 <% @book.image.each do |image| %>
 	<%= image_tag image %>
+	<br>
 <% end %>
-<p>$<%= @book.price %></p>
 <div>
-<%= link_to 'VIEW CART', '/orders/cart' %>
+<p>$<%= @book.price %></p>
+</div>
+<div>
+<%= link_to 'CART', '/orders/cart' %>
 </div>

@@ -1,5 +1,7 @@
 <h1>Log In</h1>
+<div>
 <p id="alert"><%= alert %></p>
+</div>
 <%= form_tag sessions_path do %>
 	<div class="field">
 		<%= label_tag :email %>
@@ -10,12 +12,14 @@
 						<div class="field">
 					<%= label_tag :password %>
 				</div>
-			<div>
+			<div class="last-field">
 		<%= password_field_tag :password %>
 	</div>
-<div class="actions"><%= submit_tag "Log In" %></div>
+<div class="actions"><%= submit_tag "LOG IN", :class => "button" %></div>
 <% end %>
-<p>Don't have an account?</p>
 <div>
-<%= link_to 'SIGN UP', new_customer_path %>
+	<p>Don't have an account?</p>
+</div>
+<div>
+<%= link_to 'SIGN UP', new_customer_path, :class => "btn-bg-sbmt" %>
 </div>

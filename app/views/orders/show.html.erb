@@ -1,23 +1,38 @@
 <h1>CART</h1>
-<table>
-    <thead>
-        <tr><th></th><th>Title</th><th>Quantity</th><th>Price</th><th>Total</th><th></th></tr>
-    </thead>
-<% @order.line_items.each do |item| %>
-    <tr>
-        <td class="img"><%= image_tag item.book.image.first %></td>
-        <td class="td"><%= link_to item.book.title, "/books/#{item.book.id}" %></td>
-        <td class="td">
-            <%= link_to '-', dec_path(item), class: 'qty-change' %>
-            <%= item.quantity %>
-            <%= link_to '+', inc_path(item), class: 'qty-change' %>
-        </td>
-        <td class="td">$<%= item.book.price %></td>
-        <td class="td">$<%= item.book.price * item.quantity %></td>
-        <td class="td"><%= link_to 'REMOVE', item, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-    </tr>
-<% end %>    
-</table>
-<div id="checkout">
-<%= link_to 'CHECKOUT', new_order_path %>
-</div>
+<% if @order.line_items.count == 0 %>
+    <div>
+    <%= link_to 'CREATE A BOOK', new_book_path, :class => "create-book" %>
+    </div>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+    <% @order.line_items.each do |item| %>
+        <tbody>
+            <tr>
+                <td class="img"><%= image_tag item.book.image.first %></td>
+                <td class="td"><%= link_to item.book.title, "/books/#{item.book.id}" %></td>
+                <td class="td-q">
+                    <%= link_to '-', dec_path(item), class: 'qty-btn' %>
+                    <%= item.quantity %>
+                    <%= link_to '+', inc_path(item), class: 'qty-btn' %>
+                </td>
+                <td class="td">$<%= item.book.price %></td>
+                <td class="td">$<%= item.book.price * item.quantity %></td>
+                <td class="td"><%= link_to 'REMOVE', item, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+        </tbody>
+    <% end %>    
+    </table>
+    <div id="checkout">
+    <%= link_to 'CHECKOUT', new_order_path, class: 'btn-chkt-sbmt' %>
+    </div>
+<% end %>

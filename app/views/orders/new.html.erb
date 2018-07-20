@@ -1,15 +1,5 @@
 <h1>CHECKOUT</h1>
 <%= form_for @order, {url: checkout_path} do |f| %>
-	<% if @order.errors.any? %>
-		<div class="error_messages">
-			<h3>Form is invalid</h3>
-			<ul>
-				<% for message in @order.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
 	<div class="field">
 		<%= f.label :name %>
 	</div>
@@ -46,5 +36,7 @@
 	<div class="field">
 		<%= f.text_field :special_instructions %>
 	</div>
-	<div class="actions"><%= f.submit %></div>
+	<div class="actions">
+		<%= f.submit "SUBMIT", :class => "button" %>
+	</div>
 <% end %>

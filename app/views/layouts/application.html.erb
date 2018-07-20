@@ -14,12 +14,10 @@
   <span class="leftnav">
     <%= link_to 'CREATE A BOOK', new_book_path %>
   </span>
-  <span class="customername">
+  <span class="customer-name">
     <% if current_customer %>
       <%= current_customer.name %>
   </span>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'DASHBOARD', '/dashboard' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'CART', '/orders/cart' %>
       &nbsp;&nbsp;&nbsp;&nbsp;
@@ -33,13 +31,15 @@
     <%= yield %>
   <footer>
     <div>
-      <%= link_to 'ABOUT', "#" %>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'HOME', root_path %>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'FAQ', '/faq' %>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'CONTACT', "#" %>
+      <% if current_customer %>
+        <%= link_to 'CART', '/orders/cart' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
+        <%= link_to 'ABOUT', "/about" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to 'HOME', root_path %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to 'FAQ', '/faq' %>
     </div>
   </footer>
   </body>
