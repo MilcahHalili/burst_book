@@ -113,9 +113,24 @@ p {
     padding-bottom: 2%;
 }
 
+.btn-lgn {
+    font-weight: 900;
+    font-size: 30px;
+    background-color: rgb(42, 216, 243);
+    color: maroon;
+    border: none;
+    border-radius: 12px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin-bottom: 2.5%;
+    padding-right: .5%;
+    padding-left: .5%;
+}
+
 .button:hover, .create-book:hover,
 .btn-bg-sbmt:hover, .btn-xl-sbmt:hover,
-.btn-chkt-sbmt:hover, .qty-btn:hover {
+.btn-chkt-sbmt:hover, .qty-btn:hover,
+.btn-lgn:hover {
     background-color: maroon;
     color: rgb(42, 216, 243);
 }
