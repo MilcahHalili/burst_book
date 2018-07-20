@@ -167,6 +167,21 @@ p {
     padding-top: .25%;
 }
 
+.btn-xl {
+    font-weight: 900;
+    font-size: 30px;
+    background-color: rgb(42, 216, 243);
+    color: maroon;
+    height: 45px;
+    width: 245.5px;
+    border: none;
+    border-radius: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    padding-left: 1.71%;
+    padding-top: .25%;
+}
+
 .btn-chkt-sbmt {
     font-weight: 900;
     font-size: 30px;

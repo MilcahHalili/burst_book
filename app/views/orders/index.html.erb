@@ -1,3 +1,4 @@
 <h1>Order History</h1>
 <% @orders.each do |o| %>
+    <%= link_to o.updated_at(%m%d%Y), "/orders/#{o.id}" %>
 <% end %>    

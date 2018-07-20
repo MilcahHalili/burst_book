@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 	
 	def index
 		@orders = current_customer.orders.order(updated_at: :desc)
-		@orders.line_items
 	end
 
 	def new
