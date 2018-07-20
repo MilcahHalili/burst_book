@@ -1,25 +1,3 @@
 <h1>Order History</h1>
-<table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-        </thead>
-    <% @order.line_items.each do |item| %>
-        <tbody>
-            <tr>
-                <td class="img"><%= image_tag item.book.image.first %></td>
-                <td class="td"><%= link_to item.book.title, "/books/#{item.book.id}" %></td>
-                <td class="td-q"><%= item.quantity %></td>
-                <td class="td">$<%= item.book.price %></td>
-                <td class="td">$<%= item.book.price * item.quantity %></td>
-                <td class="td"></td>
-            </tr>
-        </tbody>
-    <% end %>    
-</table>
+<% @orders.each do |o| %>
+<% end %>    

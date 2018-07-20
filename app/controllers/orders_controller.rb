@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-
+	before_action :authorize
+	
 	def index
 		@orders = current_customer.orders.order(updated_at: :desc)
 		@orders.line_items
